@@ -14,6 +14,14 @@ angular.module('Whatsapp')
                         controller: 'ChatsCtrl as chats'
                     }
                 }
+            }).state('tab.chat', {
+                url: '/chats/:chatId',
+                views: {
+                    'tab-chats': {
+                        templateUrl: 'client/templates/chat-detail.html',
+                        controller: 'ChatDetailCtrl as chat'
+                    }
+                }
             });
         $urlRouterProvider.otherwise('tab/chats');
     });
