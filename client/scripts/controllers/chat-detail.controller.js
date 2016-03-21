@@ -36,4 +36,8 @@ angular.module('Whatsapp')
                 return Chats.findOne(chatId);
             }
         });
+        $scope.$watchCollection('chat.messages', (oldVal, newVal) => {
+            let animate = oldVal.length !== newVal.length;
+            $ionicScrollDelegate.$getByHandle('chatScroll').scrollBottom(animate);
+        });
     });
