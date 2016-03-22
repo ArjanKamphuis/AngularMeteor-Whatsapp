@@ -7,6 +7,7 @@ angular.module('Whatsapp')
             if (chat) { return goToChat(chat._id); }
             let newChatId =  Meteor.call('newChat', userId, (error, result) => { goToChat(result); });
         };
+        this.subscribe('users');
         this.helpers({
             users() {
                 return Meteor.users.find({ _id: { $ne: Meteor.userId() } });
