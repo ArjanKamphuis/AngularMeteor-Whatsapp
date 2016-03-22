@@ -25,7 +25,9 @@ angular.module('Whatsapp')
             if (isIOS) {
                 this.keyboardHeight = 0;
             }
-            $ionicScrollDelegate.$getByHandle('chatScroll').resize();
+            $timeout(function() {
+                $ionicScrollDelegate.$getByHandle('chatScroll').resize();
+            }, 300);
         };
         this.closeKeyboard = () => { /* cordova.plugins.keyboard.close(); */ };
         this.helpers({
@@ -38,6 +40,8 @@ angular.module('Whatsapp')
         });
         $scope.$watchCollection('chat.messages', (oldVal, newVal) => {
             let animate = oldVal.length !== newVal.length;
-            $ionicScrollDelegate.$getByHandle('chatScroll').scrollBottom(animate);
+            $timeout(function() {
+                $ionicScrollDelegate.$getByHandle('chatScroll').scrollBottom(animate);
+            }, 300);
         });
     });
