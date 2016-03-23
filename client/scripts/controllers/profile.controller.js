@@ -12,7 +12,7 @@ angular.module('Whatsapp')
             });
         }
         this.updatePicture = () => {
-            MeteorCamera.getPicture({ width: 240, height: 240 }, (err, data) => {
+            MeteorCameraUI.getPicture({ width: 240, height: 240 }, (err, data) => {
                 if (err && err.error === 'cancel') return;
                 if (err) return handleError(err);
                 $ionicLoading.show({ template: 'Updating picture...' });
