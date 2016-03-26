@@ -56,6 +56,20 @@ angular.module('Whatsapp')
                         controller: 'SettingsCtrl as settings'
                     }
                 }
+            })
+            .state('tab.contacts', {
+                url: '/contacts',
+                views: {
+                    'tab-contacts': {
+                        templateUrl: 'client/templates/contacts.html',
+                        controller: 'ContactsCtrl as contacts'
+                    }
+                },
+                resolve: {
+                    users() {
+                        return Meteor.subscribe('users');
+                    }
+                }
             });
             
         $urlRouterProvider.otherwise('tab/chats');
